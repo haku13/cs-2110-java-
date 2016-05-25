@@ -1,0 +1,58 @@
+import java.applet.Applet;
+import java.awt.Color;
+import java.awt.Graphics;
+
+
+public class WebApplet extends Applet implements Runnable{
+	
+	int x = 0;
+	int y = 0;
+	int dx = 1;
+	int dy = 2;
+	int radius = 20;
+	
+	@Override
+	public void init() {
+		
+		
+	}
+	@Override
+	public void start() {
+		Thread thread = new Thread(this);
+		thread.start();
+		
+	}
+	@Override
+	public void run() {
+		//thread info for above thread method
+		while (true){
+			x += dx;
+			y += dy;
+			repaint();		//repaint canvas and then sleep for 17 msec
+			try {			//try and sleep, if not(catch) printStackTrace
+				Thread.sleep(17);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
+		}
+	}
+	@Override
+	public void stop() {
+		
+		
+	}
+	@Override
+	public void destroy() {
+		
+		
+	}
+	@Override
+	public void paint(Graphics g) {
+		g.setColor(Color.BLUE);
+		g.fillOval(x-radius, y-radius, radius*2, radius*2);
+		
+	}
+	
+
+}

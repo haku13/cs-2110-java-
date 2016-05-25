@@ -1,0 +1,3 @@
+eclipse.preferences.version=1
+org.webcat.eclipse.projectlink.preferences.submitURL=https\://web-cat.cs.vt.edu/Web-Cat/WebObjects/Web-Cat.woa/wa/assignments/eclipse?institution\=UVA
+org.webcat.eclipse.projectlink.preferences.urlType=separate

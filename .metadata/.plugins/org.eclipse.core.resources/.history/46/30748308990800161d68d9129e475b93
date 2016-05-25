@@ -1,0 +1,179 @@
+import java.awt.Color;
+
+public class Recursion {
+	public static String reverseString(String s) {
+		String result = "";
+		if (s.length() == 0) {
+			return result;
+		} else {
+			return reverseString(s.substring(1)) + s.charAt(0);
+		}
+	}
+	
+	public static int countWays(int numStairs) {
+		if (numStairs <= 1) {
+			return 1;
+		} else {
+			return countWays(numStairs - 1) + countWays(numStairs - 2);
+		}
+	}
+	
+	public static int ackermann(int m, int n) {
+		if (m == 0){
+			return n + 1;
+		} else if (m > 0 && n == 0) {
+			return ackermann(m-1, 1);
+		} else {
+			return ackermann(m-1, ackermann(m, n-1));
+		}
+	}
+	
+	
+	
+
+	
+	public static void snowflake(Turtle t, int depth, double length) {
+		if(depth == 0){
+			//t.pickPenUp();
+			t.putPenDown();
+			t.forward(length);
+			return;
+		}
+				
+		snowflake(t, depth-1, length/3);
+		t.left(60);
+		snowflake(t, depth-1, length/3);
+		t.left(240);
+		snowflake(t, depth-1, length/3);
+		t.left(60);
+		snowflake(t, depth-1, length/3);
+		return;
+	}
+	
+
+
+	public static void main(String[] args) {
+		String s = "ma"; 
+		System.out.println(reverseString(s));
+
+		System.out.println(countWays(5));
+		
+		System.out.println(ackermann(2,4));
+		
+	/*	
+		
+		World myWorld = new World(900,900,Color.WHITE);
+		Turtle bob = new Turtle(myWorld);
+		bob.setDelay(0);
+		bob.pickPenUp();
+		bob.goTo(10,50);
+		snowflake(bob, 4, 70);
+		bob.right(120);
+		snowflake(bob, 4, 70);
+		bob.right(120);
+		snowflake(bob, 4, 70);
+		bob.right(120);
+	*/
+		
+		/*
+		World world = new World(900,900,Color.WHITE);
+		Turtle hi = new Turtle(world);
+		hi.setDelay(0);
+		hi.pickPenUp();
+		hi.goTo(0,50);
+		dragon(hi, 10, 20);
+	
+		
+		World w = new World(900,900,Color.WHITE);
+		Turtle turt = new Turtle(w);
+		turt.setDelay(0);
+		turt.goTo(0, 50);
+		other(turt, 4, 50);
+		*/
+		
+		
+		World ayy = new World(900,900,Color.WHITE);
+		Turtle d = new Turtle(ayy);
+		d.setDelay(0);
+		//d.goTo(0, 50);
+		dragon(d, 7, 5, 5);
+	}
+	
+
+	public static void dragon(Turtle t, int depth, double length) {
+	      if (depth == 0) {
+	    	 t.putPenDown();
+	         t.forward(length);
+	         
+	      }
+		  else {
+	         dragon(t, depth-1, length);
+	         t.left(90);
+	         nogard(t, depth-1, length);
+	      }
+	   }
+	   
+	   // reverse dragon curve of order n
+	   public static void nogard(Turtle t, int depth, double length) {
+	      if (depth == 0) {
+	    	 t.putPenDown();
+	         t.forward(length);
+	        
+	      }
+	      else {
+	         dragon(t, depth-1, length);
+	         t.left(-90);
+	         nogard(t, depth-1, length);
+	      }
+	   }
+	   
+	   
+	   public static void dragon(Turtle t, int depth, int x, int y) {
+		   if (depth == 0){
+			   t.putPenDown();
+			   t.forward(x);
+			   return;
+		   } 
+		   if (x > 0) {
+			  
+			   t.right(90);
+			   t.forward(x);
+			   dragon(t, depth-1, x, y);
+			  
+		   } 
+		   if (y > 0) {
+			   t.left(90);
+			   t.forward(y);
+			   dragon(t, depth-1, x, y);
+			   t.left(90);
+			   t.forward(y);
+			   dragon(t, depth-1, x, y);
+		   }
+	   }
+	   
+	   
+	   
+	   public static void other(Turtle t, int depth, double length){
+		   if(depth == 0){
+				//t.pickPenUp();
+				t.putPenDown();
+				t.forward(length);
+				return;
+			}
+					
+			snowflake(t, depth-1, length/3);
+			t.left(60);
+			snowflake(t, depth-1, length/3);
+			t.left(60);
+			snowflake(t, depth-1, length/3);
+			t.left(60);
+			snowflake(t, depth-1, length/3);
+			return;
+	   }
+
+	   
+	   
+	   
+	   
+	
+}
